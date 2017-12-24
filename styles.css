@@ -65,7 +65,7 @@ body {
   font-size: 10px;
 }
 
-#inputText {
+#logNumInput {
   position: absolute;
   top: 200px;
   left: 370px;
@@ -80,6 +80,26 @@ body {
   border: none;
 }
 
-#inputText:focus, #saveButton:focus, #clearButton:focus {
+#attachModeDiv {
+  position: absolute;
+  top: 307px;
+  left: 413px;
+  z-index: 3;
+}
+
+#attachModeDiv p {
+  font-family: arial, sans-serif;
+  color: red;
+  font-size: 10px;
+  margin: 4px;
+  float: left;
+}
+
+#attachModeInput {
+  margin: 0;
+  width: 10px;
+}
+
+#logNumInput:focus, #trackButton:focus, #clearButton:focus {
   outline-width: 0;
 }

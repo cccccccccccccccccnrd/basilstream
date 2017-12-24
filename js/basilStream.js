@@ -1,13 +1,13 @@
 let sensorVars = [];
 let logNum, trackedCanvas, logInterval, i, trackButton, areaText, logText, timestamp, sensorVar, sensorVarAvg;
 
-// Sends transaction with data if true
+// Sends transaction if true (connected to checkbox in gui)
 let attachMode = false;
 
-// Scaling factor to messure surface area
+// Scaling factor to meassure surface area
 let scaling = 5.6;
 
-// Interval of tracking in seconds
+// Interval of measurements in seconds
 let interval = 5;
 
 let seed = "";
@@ -27,7 +27,7 @@ function setup() {
   clearButton.mousePressed(clearCanvas);
   areaText = select("#areaText");
   logText = select("#logText");
-  inputText = select("#inputText");
+  logNumInput = select("#logNumInput");
 }
 
 function draw() {
@@ -71,24 +71,26 @@ function getSensorVar(i) {
   timestamp = date + " " + time;
   logText.html("LOG-" + i + " " + timestamp + " " + sensorVar);
 
+  // Pushes each measurement (log number, date, timestamp, value of surface area and if the measurement was a transaction) into an array
   sensorVars.push({
     "log-num": i,
     "date": date,
     "time": time,
     "value": sensorVar,
-    "transaction": attachMode
+    "transaction": document.getElementById("attachModeInput").checked
   });
 
-  if (attachMode === true) {
+  // If the checkbox in the gui is checked, the measurement is being send to the tangle
+  if (document.getElementById("attachModeInput").checked) {
     attachSensorVar(i, date, time, sensorVar);
   }
 }
 
 function saveSensorVar() {
-  logNum = inputText.value();
+  logNum = logNumInput.value();
   getSensorVar(logNum);
   logNum++;
-  inputText.value(logNum);
+  logNumInput.value(logNum);
 }
 
 function startTracking() {
