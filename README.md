@@ -22,4 +22,4 @@ Links:
 [IOTA Address Generator (educational)](https://github.com/domschiener/iota-address-generator)
 
 ## Hardware Setup
-Right now the surface area of the basil is being tracked by a webcam. Our hardware setup right now: `Logitech C270` connected to `Raspberry Pi 3 Model B`.
+Right now the surface area of the basil is being tracked by a webcam. Our hardware setup: `Logitech C270` connected to `Raspberry Pi 3 Model B`.
