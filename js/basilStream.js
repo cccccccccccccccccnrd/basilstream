@@ -15,7 +15,7 @@ let basilAddress = "";
 let basilTag = "LIFECYCLE BASILSTREAM";
 
 let iota = new IOTA({
-  "provider": "http://:14265"
+  "provider": "http://localhost:14265"
 });
 
 function setup() {
