@@ -1,7 +1,7 @@
 # basilStream
 Script with a simple interface to track growth of basil and transfer surface area data on to the @iotaledger
 
-## Setup
+## Software Setup
 To succesfully send data to the tangle you first have to generate a seed and an address from that seed. Update the `seed` and `basilAddress` variables in `basilStream.js` with yours.
 
 ```js
@@ -20,3 +20,6 @@ let iota = new IOTA({
 Links:
 [How to generate your IOTA Wallet Seed](https://iota.guide/seed/how-to-generate-iota-wallet-seed/)
 [IOTA Address Generator (educational)](https://github.com/domschiener/iota-address-generator)
+
+## Hardware Setup
+Right now the surface area of the basil is being tracked by a webcam. Our hardware setup right now: `Logitech C270` connected to `Raspberry Pi 3 Model B`.
