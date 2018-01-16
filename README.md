@@ -5,8 +5,8 @@ Script with a simple interface to track growth of basil and transfer surface are
 To succesfully send data to the tangle you first have to generate a seed and an address from that seed. Update the `seed` and `address` variables in `basilstream.js` with yours.
 
 ```js
-let seed = '';
-let address = '';
+let seed = ''
+let address = ''
 ```
 
 Secondly you have to choose a `"provider"` which will do the POW and send the transaction to the tangle. Note that the full-node has to have `attachToTangle` allowed, otherwise it won't accept the transaction.
@@ -14,7 +14,7 @@ Secondly you have to choose a `"provider"` which will do the POW and send the tr
 ```js
 let iota = new IOTA({
   'provider': 'http://localhost:14265'
-});
+})
 ```
 
 Links:
