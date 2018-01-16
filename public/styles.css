@@ -1,0 +1,38 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  font-size: 2em;
+  color: red;
+  z-index: 3;
+}
+
+#canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+#video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#surface-area {
+  position: absolute;
+  top: 320px;
+  left: 20px;
+}
+
+#toll {
+  position: absolute;
+  top: 350px;
+  left: 20px;
+}

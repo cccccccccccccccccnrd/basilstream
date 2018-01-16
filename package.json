@@ -1,0 +1,17 @@
+{
+  "name": "basilstream",
+  "version": "1.0.1",
+  "description": "Simple app that tracks growth of basil and transfers data on to the @iotaledger",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Conrad Weise",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "iota.lib.js": "^0.4.6",
+    "mongoose": "^4.13.9"
+  }
+}
