@@ -15,27 +15,27 @@ p {
 
 #canvas {
   position: absolute;
-  top: 438px;
+  top: 440px;
   left: 272px;
   z-index: 2;
 }
 
 #video {
   position: absolute;
-  top: 438px;
+  top: 440px;
   left: 272px;
   z-index: 1;
 }
 
 #surface-area {
   position: absolute;
-  top: 778px;
+  top: 780px;
   left: 298px;
 }
 
 #transaction {
   position: absolute;
-  top: 813px;
+  top: 810px;
   left: 298px;
   width: 427px;
 }
