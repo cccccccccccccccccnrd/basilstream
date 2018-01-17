@@ -47,7 +47,7 @@ function sendDataToTangle(dataBundle) {
   let address = 'ODRPQSM9MJJNUDHKAFSGGMFVDRVKCPOLSUBIOTYRLVSXRZLWXMKSZYFUSVYQ99RCBN9HKYCHEXMHDAILWCXNINLVCZ'
 
   let iota = new IOTA({
-    'provider': 'http://node.lifecycleproject.eu:14265'
+    'provider': 'http://iri1.iota.fm:80'
   });
 
   function inTrytes(jsonData) {
