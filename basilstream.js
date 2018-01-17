@@ -17,7 +17,7 @@ function bundleData(surfaceArea) {
   if (attachMode === false) {
     sendDataToMongoDB(dataBundle)
   } else {
-    sendDataToMongoDB(dataBundle)
+    //sendDataToMongoDB(dataBundle)
     sendDataToTangle(dataBundle)
   }
 }
@@ -38,7 +38,7 @@ function sendDataToMongoDB(dataBundle) {
 
   let newestBasilstreamItem = basilstreamCollection(dataBundle).save(function(err, data) {
     if (err) throw err
-    console.log('Successfully stored data: ' + data)
+    console.log('Successfully stored data: ' + JSON.stringify(data))
   })
 }
 
