@@ -64,11 +64,14 @@ function sendDataToTangle(dataBundle) {
   }]
 
   console.log('Prepared transaction: ' + JSON.stringify(dataBundle))
+  let transactionDataBundle = JSON.stringify(dataBundle)
 
   iota.api.sendTransfer(seed, 1, 14, transfers, function(err, bundle) {
     if (err) throw err
     console.log('Successfully sent transaction: ', bundle)
   })
+
+  module.exports.transactionDataBundle = transactionDataBundle
 }
 
 module.exports.bundleData = bundleData

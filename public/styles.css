@@ -7,7 +7,8 @@ html, body {
 p {
   margin: 0;
   padding: 0;
-  font-size: 2em;
+  font-size: 13px;
+  font-family: 'Courier New', sans-serif;
   color: red;
   z-index: 3;
 }
@@ -28,8 +29,15 @@ p {
 
 #surface-area {
   position: absolute;
-  top: 320px;
-  left: 20px;
+  top: 820px;
+  left: 298px;
+}
+
+#transaction {
+  position: absolute;
+  top: 850px;
+  left: 298px;
+  width: 427px;
 }
 
 #toll {
