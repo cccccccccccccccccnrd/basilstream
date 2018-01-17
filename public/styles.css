@@ -1,6 +1,7 @@
 html, body {
   margin: 0;
   padding: 0;
+  background-color: #000;
 }
 
 p {
@@ -13,15 +14,15 @@ p {
 
 #canvas {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 480px;
+  left: 272px;
   z-index: 2;
 }
 
 #video {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 480px;
+  left: 272px;
   z-index: 1;
 }
 
