@@ -10,6 +10,7 @@ p {
   font-family: 'Inconsolata', monospace;
   font-size: 14px;
   color: red;
+  letter-spacing: 1px;
   word-break: break-all;
   z-index: 3;
 }
