@@ -1,4 +1,4 @@
-let canvas, canvas2d, surfaceAreaP, transactionDataBundle
+let canvas, canvas2d, surfaceAreaP, transactionDataBundle, transactionHash
 
 let surfaceArea = 0
 let distance = 5
@@ -15,12 +15,16 @@ function setupUserInterface() {
 
   surfaceAreaP = document.getElementById('surface-area')
   transactionP = document.getElementById('transaction')
+  transactionHashP = document.getElementById('transaction-hash')
 }
 
 function renderUserInterface() {
   surfaceAreaP.innerHTML = surfaceArea
   transactionP.innerHTML = transactionDataBundle
+  transactionHashP.innerHTML = transactionHash
 
+  getTransactionHash()
+  
   requestAnimationFrame(renderUserInterface)
 }
 
@@ -67,16 +71,26 @@ function post() {
 
   console.log('Sent surface area: ' + surfaceArea)
 
-  get()
+  getTransactionDataBundle()
 }
 
-function get() {
+function getTransactionDataBundle() {
   let request = new XMLHttpRequest()
 
-  request.open('get', '/get', true)
+  request.open('get', '/transactiondatabundle', true)
   request.onload = function() {
     transactionDataBundle = request.responseText
     console.log('Received transaction: ' + transactionDataBundle)
+  }
+  request.send()
+}
+
+function getTransactionHash() {
+  let request = new XMLHttpRequest()
+
+  request.open('get', '/transactionhash', true)
+  request.onload = function() {
+    transactionHash = request.responseText
   }
   request.send()
 }

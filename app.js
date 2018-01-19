@@ -13,8 +13,12 @@ app.post('/post', function(req, res) {
   basilStream.bundleData(req.body)
 })
 
-app.get('/get', function(req, res) {
+app.get('/transactiondatabundle', function(req, res) {
   res.send(basilStream.transactionDataBundle)
+});
+
+app.get('/transactionhash', function(req, res) {
+  res.send(basilStream.transactionHash)
 });
 
 app.listen(3000)

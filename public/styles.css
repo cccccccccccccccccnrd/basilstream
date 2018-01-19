@@ -38,6 +38,15 @@ p {
   top: 810px;
   left: 298px;
   width: 427px;
+  word-break: break-all;
+}
+
+#transaction-hash {
+  position: absolute;
+  top: 860px;
+  left: 298px;
+  width: 427px;
+  word-break: break-all;
 }
 
 #toll {

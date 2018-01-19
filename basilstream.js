@@ -50,27 +50,23 @@ function sendDataToTangle(dataBundle) {
     'provider': 'http://iri1.iota.fm:80'
   });
 
-  function inTrytes(jsonData) {
-    let stringifiedData = JSON.stringify(jsonData)
-    let dataInTrytes = iota.utils.toTrytes(stringifiedData)
-
-    return dataInTrytes
-  }
+  let stringifiedData = JSON.stringify(dataBundle)
 
   let transfers = [{
     'address': address,
     'value': 0,
-    'message': inTrytes(dataBundle)
+    'message': iota.utils.toTrytes(stringifiedData)
   }]
 
   console.log('Prepared transaction: ' + JSON.stringify(dataBundle))
   let transactionDataBundle = JSON.stringify(dataBundle)
 
-  iota.api.sendTransfer(seed, 1, 14, transfers, function(err, bundle) {
+  iota.api.sendTransfer(seed, 4, 14, transfers, function(err, bundle) {
     if (err) throw err
     console.log('Successfully sent transaction: ', bundle)
+    let transactionHash = bundle[0].hash
+    module.exports.transactionHash = transactionHash
   })
-
   module.exports.transactionDataBundle = transactionDataBundle
 }
 
