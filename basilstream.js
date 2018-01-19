@@ -47,7 +47,7 @@ function sendDataToTangle(dataBundle) {
   let address = process.env.ADDRESS
 
   let iota = new IOTA({
-    'provider': 'http://iri1.iota.fm:80'
+    'provider': 'http://178.238.237.200:14265'
   });
 
   let stringifiedData = JSON.stringify(dataBundle)

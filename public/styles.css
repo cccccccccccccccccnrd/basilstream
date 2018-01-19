@@ -15,27 +15,27 @@ p {
 
 #canvas {
   position: absolute;
-  top: 440px;
+  top: 417px;
   left: 272px;
   z-index: 2;
 }
 
 #video {
   position: absolute;
-  top: 440px;
+  top: 417px;
   left: 272px;
   z-index: 1;
 }
 
 #surface-area {
   position: absolute;
-  top: 780px;
+  top: 757px;
   left: 298px;
 }
 
 #transaction {
   position: absolute;
-  top: 810px;
+  top: 787px;
   left: 298px;
   width: 427px;
   word-break: break-all;
@@ -43,7 +43,7 @@ p {
 
 #transaction-hash {
   position: absolute;
-  top: 860px;
+  top: 832px;
   left: 298px;
   width: 427px;
   word-break: break-all;
