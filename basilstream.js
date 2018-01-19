@@ -23,7 +23,7 @@ function bundleData(surfaceArea) {
 }
 
 function sendDataToMongoDB(dataBundle) {
-  mongoose.connect('mongodb://basil:stre4m@ds251737.mlab.com:51737/basilstream', {
+  mongoose.connect(process.env.MONGODB, {
     useMongoClient: true
   })
   mongoose.Promise = global.Promise
@@ -43,8 +43,8 @@ function sendDataToMongoDB(dataBundle) {
 }
 
 function sendDataToTangle(dataBundle) {
-  let seed = 'LJVMKLB9H9MLSMWUPIOTWIWDRAS9KNIECSTTIXAYBJ9GPXLBBCDFCYDLVEP9OWQNVWGHVVTYSI9VZIHOU'
-  let address = 'ODRPQSM9MJJNUDHKAFSGGMFVDRVKCPOLSUBIOTYRLVSXRZLWXMKSZYFUSVYQ99RCBN9HKYCHEXMHDAILWCXNINLVCZ'
+  let seed = process.env.SEED
+  let address = process.env.ADDRESS
 
   let iota = new IOTA({
     'provider': 'http://iri1.iota.fm:80'

@@ -1,3 +1,4 @@
+require('dotenv').config()
 let express = require('express')
 let bodyParser = require('body-parser')
 let basilStream = require('./basilstream')
