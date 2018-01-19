@@ -7,46 +7,45 @@ html, body {
 p {
   margin: 0;
   padding: 0;
-  font-size: 13px;
-  font-family: 'Courier New', sans-serif;
+  font-family: 'Inconsolata', monospace;
+  font-size: 14px;
   color: red;
+  word-break: break-all;
   z-index: 3;
 }
 
 #canvas {
   position: absolute;
-  top: 417px;
+  top: 416px;
   left: 272px;
   z-index: 2;
 }
 
 #video {
   position: absolute;
-  top: 417px;
+  top: 416px;
   left: 272px;
   z-index: 1;
 }
 
 #surface-area {
   position: absolute;
-  top: 757px;
+  top: 756px;
   left: 298px;
 }
 
 #transaction {
   position: absolute;
-  top: 787px;
+  top: 788px;
   left: 298px;
   width: 427px;
-  word-break: break-all;
 }
 
 #transaction-hash {
   position: absolute;
-  top: 832px;
+  top: 834px;
   left: 298px;
   width: 427px;
-  word-break: break-all;
 }
 
 #toll {
