@@ -1,8 +1,7 @@
-let canvas, canvas2d, surfaceAreaP, transactionDataBundle, transactionHash
+let canvas, canvas2d, surfaceAreaP, transactionDataBundle, transactionHash, surfaceArea
 
-let surfaceArea = 0
-let distance = 5
-let interval = 0.1 // In minutes
+let distance = 5 // Unit: mm
+let interval = 0.1 // Unit: min
 
 //setInterval(post, interval * 60000)
 
@@ -24,7 +23,7 @@ function renderUserInterface() {
   transactionHashP.innerHTML = transactionHash
 
   getTransactionHash()
-  
+
   requestAnimationFrame(renderUserInterface)
 }
 

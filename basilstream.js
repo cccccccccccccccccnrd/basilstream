@@ -4,7 +4,7 @@ let IOTA = require('iota.lib.js')
 let attachMode = true
 
 function bundleData(surfaceArea) {
-  let id = 'first-prototype@home'
+  let id = process.env.PLANTID
   let d = new Date()
   let timestamp = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + '-' + d.getHours() + '-' + d.getMinutes()
 
@@ -47,7 +47,7 @@ function sendDataToTangle(dataBundle) {
   let address = process.env.ADDRESS
 
   let iota = new IOTA({
-    'provider': 'http://178.238.237.200:14265'
+    'provider': process.env.NODE
   });
 
   let stringifiedData = JSON.stringify(dataBundle)
