@@ -1,7 +1,7 @@
 let mongoose = require('mongoose')
 let IOTA = require('iota.lib.js')
 
-let backupMode = true
+let backupMode = false
 
 function bundleData(surfaceArea) {
   let id = process.env.PLANTID
@@ -15,31 +15,11 @@ function bundleData(surfaceArea) {
   }
 
   if (backupMode === true) {
+    sendDataToTangle(dataBundle)
     sendDataToMongoDB(dataBundle)
   } else {
-    sendDataToMongoDB(dataBundle)
     sendDataToTangle(dataBundle)
   }
-}
-
-function sendDataToMongoDB(dataBundle) {
-  mongoose.connect(process.env.MONGODB, {
-    useMongoClient: true
-  })
-  mongoose.Promise = global.Promise
-
-  let schema = new mongoose.Schema({
-    id: String,
-    timestamp: String,
-    surface_area: Number
-  })
-
-  let basilstreamCollection = mongoose.model('basilstream', schema)
-
-  let newestBasilstreamItem = basilstreamCollection(dataBundle).save(function(err, data) {
-    if (err) throw err
-    console.log('Successfully stored data: ' + JSON.stringify(data))
-  })
 }
 
 function sendDataToTangle(dataBundle) {
@@ -68,6 +48,26 @@ function sendDataToTangle(dataBundle) {
     module.exports.transactionHash = transactionHash
   })
   module.exports.transactionDataBundle = transactionDataBundle
+}
+
+function sendDataToMongoDB(dataBundle) {
+  mongoose.connect(process.env.MONGODB, {
+    useMongoClient: true
+  })
+  mongoose.Promise = global.Promise
+
+  let schema = new mongoose.Schema({
+    id: String,
+    timestamp: String,
+    surface_area: Number
+  })
+
+  let basilstreamCollection = mongoose.model('basilstream', schema)
+
+  let newestBasilstreamItem = basilstreamCollection(dataBundle).save(function(err, data) {
+    if (err) throw err
+    console.log('Successfully stored data: ' + JSON.stringify(data))
+  })
 }
 
 module.exports.bundleData = bundleData
