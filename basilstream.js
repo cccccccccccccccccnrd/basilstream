@@ -1,7 +1,7 @@
 let mongoose = require('mongoose')
 let IOTA = require('iota.lib.js')
 
-let attachMode = true
+let backupMode = true
 
 function bundleData(surfaceArea) {
   let id = process.env.PLANTID
@@ -14,10 +14,10 @@ function bundleData(surfaceArea) {
     surface_area: surfaceArea
   }
 
-  if (attachMode === false) {
+  if (backupMode === true) {
     sendDataToMongoDB(dataBundle)
   } else {
-    //sendDataToMongoDB(dataBundle)
+    sendDataToMongoDB(dataBundle)
     sendDataToTangle(dataBundle)
   }
 }
