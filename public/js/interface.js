@@ -1,12 +1,22 @@
-let canvas, canvas2d, surfaceAreaP, transactionDataBundle, transactionHash, surfaceArea
+let canvas, canvas2d, surfaceAreaP, transactionDataBundle, transactionHash, surfaceArea, interval, distance
 
-let distance = 5 // Unit: mm
-let interval = 0.1 // Unit: min
-
-//setInterval(post, interval * 60000)
-
+getSettings()
 setupUserInterface()
 renderUserInterface()
+
+function getSettings() {
+  let request = new XMLHttpRequest()
+
+  request.open('get', '/getsettings', true)
+  request.onload = function() {
+    settings = JSON.parse(request.responseText)
+    interval = settings.interval
+    distance = settings.distance
+
+    // setInterval(postSurfaceArea, interval)
+  }
+  request.send()
+}
 
 function setupUserInterface() {
   canvas = document.getElementById('canvas')
@@ -21,8 +31,6 @@ function renderUserInterface() {
   surfaceAreaP.innerHTML = surfaceArea
   transactionP.innerHTML = transactionDataBundle
   transactionHashP.innerHTML = transactionHash
-
-  getTransactionHash()
 
   requestAnimationFrame(renderUserInterface)
 }
@@ -61,22 +69,23 @@ function drawRect(x, y, width, height) {
   canvas2d.strokeStyle = 'red'
 }
 
-function post() {
+function postSurfaceArea() {
   let request = new XMLHttpRequest()
 
-  request.open('post', '/post', true)
+  request.open('post', '/postsurfacearea', true)
   request.setRequestHeader('content-type', 'text/plain')
   request.send(surfaceArea)
 
   console.log('Sent surface area: ' + surfaceArea)
 
   getTransactionDataBundle()
+  getTransactionHash()
 }
 
 function getTransactionDataBundle() {
   let request = new XMLHttpRequest()
 
-  request.open('get', '/transactiondatabundle', true)
+  request.open('get', '/gettransactiondatabundle', true)
   request.onload = function() {
     transactionDataBundle = request.responseText
     console.log('Received transaction: ' + transactionDataBundle)
@@ -87,9 +96,13 @@ function getTransactionDataBundle() {
 function getTransactionHash() {
   let request = new XMLHttpRequest()
 
-  request.open('get', '/transactionhash', true)
+  request.open('get', '/gettransactionhash', true)
   request.onload = function() {
-    transactionHash = request.responseText
+    if (request.status === 403) {
+      setTimeout(getTransactionHash, 3000)
+    } else {
+      transactionHash = request.responseText
+    }
   }
   request.send()
 }

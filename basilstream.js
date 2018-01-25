@@ -1,8 +1,6 @@
 let mongoose = require('mongoose')
 let IOTA = require('iota.lib.js')
 
-let backupMode = false
-
 function bundleData(surfaceArea) {
   let id = process.env.PLANTID
   let d = new Date()
@@ -14,12 +12,17 @@ function bundleData(surfaceArea) {
     surface_area: surfaceArea
   }
 
+  let backupMode
+  console.log(backupMode)
+
   if (backupMode === true) {
     sendDataToTangle(dataBundle)
     sendDataToMongoDB(dataBundle)
   } else {
     sendDataToTangle(dataBundle)
   }
+
+  exports.backupMode = backupMode
 }
 
 function sendDataToTangle(dataBundle) {
@@ -38,14 +41,17 @@ function sendDataToTangle(dataBundle) {
     'message': iota.utils.toTrytes(stringifiedData)
   }]
 
-  console.log('Prepared transaction: ' + JSON.stringify(dataBundle))
   let transactionDataBundle = JSON.stringify(dataBundle)
 
   iota.api.sendTransfer(seed, 4, 14, transfers, function(err, bundle) {
     if (err) throw err
-    console.log('Successfully sent transaction: ', bundle)
+    console.log(bundle)
+
     let transactionHash = bundle[0].hash
+    let passTransactionHash = true
+
     module.exports.transactionHash = transactionHash
+    module.exports.passTransactionHash = passTransactionHash
   })
   module.exports.transactionDataBundle = transactionDataBundle
 }
