@@ -133,7 +133,7 @@ The first line below the camera stream is the current value of the tracked surfa
 ## Data bundle (3)
 
 Below the surface area you see the last sent data bundle. With each post request to the server a new data bundle is send to the Tangle.
-> To set the interval of the transfer see [Setup tracker](configuration.md#setup-tracker)
+> To set the interval of the transfer see [Setup tracker](#setup-tracker)
 
 ## Transaction hash (4)
 
