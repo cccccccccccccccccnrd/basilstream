@@ -9,7 +9,7 @@ let controls = express()
 let interval, distance, backupMode
 
 let settings = {
-  interval: 60000,
+  interval: 1,
   distance: 5,
   backupMode: true
 }
@@ -21,7 +21,7 @@ function setSettings() {
   distance = settings.distance
   backupMode = settings.backupMode
 
-  basilStream.backupMode = backupMode
+  basilStream.bundleData.backupMode = backupMode
 }
 
 main.use(bodyParser.text({

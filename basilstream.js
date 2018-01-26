@@ -21,8 +21,6 @@ function bundleData(surfaceArea) {
   } else {
     sendDataToTangle(dataBundle)
   }
-
-  exports.backupMode = backupMode
 }
 
 function sendDataToTangle(dataBundle) {
@@ -72,7 +70,7 @@ function sendDataToMongoDB(dataBundle) {
 
   let newestBasilstreamItem = basilstreamCollection(dataBundle).save(function(err, data) {
     if (err) throw err
-    console.log('Successfully stored data: ' + JSON.stringify(data))
+    console.log('Stored:' + data)
   })
 }
 

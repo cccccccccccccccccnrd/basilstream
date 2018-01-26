@@ -1,4 +1,4 @@
-let canvas, canvas2d, surfaceAreaP, transactionDataBundle, transactionHash, surfaceArea, interval, distance
+let canvas, canvas2d, surfaceAreaP, transactionDataBundle, transactionHash, surfaceArea, interval, distance, postSurfaceAreaInterval
 
 getSettings()
 setupUserInterface()
@@ -13,7 +13,8 @@ function getSettings() {
     interval = settings.interval
     distance = settings.distance
 
-    // setInterval(postSurfaceArea, interval)
+    clearInterval(postSurfaceAreaInterval)
+    postSurfaceAreaInterval = setInterval(postSurfaceArea, interval * 60000)
   }
   request.send()
 }
@@ -76,8 +77,7 @@ function postSurfaceArea() {
   request.setRequestHeader('content-type', 'text/plain')
   request.send(surfaceArea)
 
-  console.log('Sent surface area: ' + surfaceArea)
-
+  getSettings()
   getTransactionDataBundle()
   getTransactionHash()
 }
@@ -88,7 +88,6 @@ function getTransactionDataBundle() {
   request.open('get', '/gettransactiondatabundle', true)
   request.onload = function() {
     transactionDataBundle = request.responseText
-    console.log('Received transaction: ' + transactionDataBundle)
   }
   request.send()
 }
