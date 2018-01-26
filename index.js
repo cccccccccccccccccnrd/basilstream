@@ -10,18 +10,7 @@ let interval, distance, backupMode
 
 let settings = {
   interval: 1,
-  distance: 5,
-  backupMode: true
-}
-
-setSettings()
-
-function setSettings() {
-  interval = settings.interval
-  distance = settings.distance
-  backupMode = settings.backupMode
-
-  basilStream.bundleData.backupMode = backupMode
+  distance: 5
 }
 
 main.use(bodyParser.text({
@@ -62,7 +51,6 @@ controls.use(bodyParser.text({
 
 controls.post('/postsettings', function(req, res) {
   settings = JSON.parse(req.body)
-  setSettings()
   console.log(settings)
 })
 
@@ -71,3 +59,5 @@ controls.get('/getsettings', function(req, res) {
 })
 
 controls.listen(4000)
+
+module.exports.settings = settings

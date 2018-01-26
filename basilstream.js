@@ -1,4 +1,3 @@
-let mongoose = require('mongoose')
 let IOTA = require('iota.lib.js')
 
 function bundleData(surfaceArea) {
@@ -12,15 +11,7 @@ function bundleData(surfaceArea) {
     surface_area: surfaceArea
   }
 
-  let backupMode
-  console.log(backupMode)
-
-  if (backupMode === true) {
-    sendDataToTangle(dataBundle)
-    sendDataToMongoDB(dataBundle)
-  } else {
-    sendDataToTangle(dataBundle)
-  }
+  sendDataToTangle(dataBundle)
 }
 
 function sendDataToTangle(dataBundle) {
@@ -52,26 +43,6 @@ function sendDataToTangle(dataBundle) {
     module.exports.passTransactionHash = passTransactionHash
   })
   module.exports.transactionDataBundle = transactionDataBundle
-}
-
-function sendDataToMongoDB(dataBundle) {
-  mongoose.connect(process.env.MONGODB, {
-    useMongoClient: true
-  })
-  mongoose.Promise = global.Promise
-
-  let schema = new mongoose.Schema({
-    id: String,
-    timestamp: String,
-    surface_area: Number
-  })
-
-  let basilstreamCollection = mongoose.model('basilstream', schema)
-
-  let newestBasilstreamItem = basilstreamCollection(dataBundle).save(function(err, data) {
-    if (err) throw err
-    console.log('Stored:' + data)
-  })
 }
 
 module.exports.bundleData = bundleData

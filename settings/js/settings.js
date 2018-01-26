@@ -11,11 +11,9 @@ function getSettings() {
     settings = JSON.parse(request.responseText)
     interval = settings.interval
     distance = settings.distance
-    backupMode = settings.backupMode
 
     document.getElementById('interval').value = interval
     document.getElementById('distance').value = distance
-    document.getElementById('backup-mode').checked = backupMode
   }
   request.send()
 }
@@ -23,12 +21,10 @@ function getSettings() {
 function postSettings() {
   interval = document.getElementById('interval').value
   distance = document.getElementById('distance').value
-  backupMode = document.getElementById('backup-mode').checked
 
   settings = {
     interval: interval,
-    distance: distance,
-    backupMode: backupMode
+    distance: distance
   }
 
   let request = new XMLHttpRequest()
