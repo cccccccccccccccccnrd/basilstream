@@ -21,6 +21,7 @@ function getSettings() {
 function postSettings() {
   interval = document.getElementById('interval').value
   distance = document.getElementById('distance').value
+  set = document.getElementById('set')
 
   settings = {
     interval: interval,
@@ -33,5 +34,13 @@ function postSettings() {
   request.setRequestHeader('content-type', 'text/plain')
   request.send(JSON.stringify(settings))
 
-  console.log('Sent settings: ' + JSON.stringify(settings))
+  set.innerHTML = 'Saved'
+  set.style.backgroundColor = 'red'
+  set.style.color = 'white'
+
+  setTimeout(function() {
+    set.innerHTML = 'Set'
+    set.style.backgroundColor = 'black'
+    set.style.color = 'red'
+  }, 1250)
 }
