@@ -8,13 +8,11 @@ html, body {
   overflow-y: hidden;
 }
 
-p {
-  margin: 0;
-  padding: 0;
+span {
+  position: absolute;
+  right: 4em;
+  padding: 1em;
   color: red;
-  letter-spacing: 1.2px;
-  word-break: break-all;
-  z-index: 3;
 }
 
 input {
