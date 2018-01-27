@@ -91,6 +91,7 @@ tracking.ColorTracker.registerColor('custom', function(r, g, b) {
   }
 })
 ```
+> Have look at the documentation from the [tracking.js](https://trackingjs.com/docs.html#trackers) library.
 
 ## Setup data bundle
 

@@ -1,4 +1,4 @@
-let IOTA = require('iota.lib.js')
+const IOTA = require('iota.lib.js')
 
 function bundleData(surfaceArea) {
   let id = process.env.PLANTID
