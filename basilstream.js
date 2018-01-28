@@ -34,7 +34,7 @@ function sendDataToTangle(dataBundle) {
 
   iota.api.sendTransfer(seed, 4, 14, transfers, function(err, bundle) {
     if (err) throw err
-    console.log(bundle)
+    console.log('\nTRANSACTION SUCCESSFUL: ' + JSON.stringify(bundle))
 
     let transactionHash = bundle[0].hash
     let passTransactionHash = true

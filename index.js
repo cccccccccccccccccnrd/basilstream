@@ -26,6 +26,7 @@ main.post('/postsurfacearea', function(req, res) {
 
 main.get('/gettransactiondatabundle', function(req, res) {
   res.send(basilStream.transactionDataBundle)
+  console.log('\nTRANSACTION PREPARED: ' + basilStream.transactionDataBundle)
 })
 
 main.get('/gettransactionhash', function(req, res) {
@@ -51,7 +52,7 @@ controls.use(bodyParser.text({
 
 controls.post('/postsettings', function(req, res) {
   settings = JSON.parse(req.body)
-  console.log(settings)
+  console.log('\nSEETINGS CHANGED: ' + JSON.stringify(settings))
 })
 
 controls.get('/getsettings', function(req, res) {
